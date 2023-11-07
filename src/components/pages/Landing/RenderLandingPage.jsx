@@ -34,18 +34,29 @@ function RenderLandingPage(props) {
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
       <div className="graphs-section">
         <div className="grant-rates-by-office-graph-container">
-          <img src={GrantRatesByOfficeImg} alt="grant rates by office" />
+          <img
+            src={GrantRatesByOfficeImg}
+            alt="grant rates by office"
+            className="gr-office-img"
+          />
           <p>Search Grant Rates By Office</p>
         </div>
         <div className="grant-rates-by-nationality-container">
           <img
             src={GrantRatesByNationalityImg}
             alt="grant rates by nationality"
+            className="gr-nationality-img"
           />
+          <p>Search Grant Rates By Nationality</p>
         </div>
         {/* finish fleshing out these containers, keep up the good work. */}
         <div className="grant-rates-over-time-container">
-          <img src={GrantRatesOverTimeImg} alt="grant rates over time" />
+          <img
+            src={GrantRatesOverTimeImg}
+            alt="grant rates over time"
+            className="gr-overtime-img"
+          />
+          <p>Search Grant Rates Over Time</p>
         </div>
       </div>
       <div className="view-more-data-btn-container">
@@ -85,41 +96,56 @@ function RenderLandingPage(props) {
           </h3>
         </div>
       </div>
-      <div>
-        {/* Bottom Section: Add code here for the graphs section for your first ticket */}
-        <div className="bottom-section">
-          <h1 className="bottom-title">Systemic Disparity Insights</h1>
-          <div className="graph-information-box">
-            <div className="graph-information-sub-box">
-              <h1 className="sub-box-title">36%</h1>
-              <h3 className="sub-box-info">
-                By the end of the Trump administration, the average asylum
-                office grant rate had fallen 36 percent from an average of 44
-                percent in fiscal year 2016 to 28 percent in fiscal year 2020
-              </h3>
-            </div>
-            <div className="graph-information-sub-box">
-              <h1 className="sub-box-title">5%</h1>
-              <h3 className="sub-box-info">
-                The New York asylum office grant rate dropped to 5 percent in
-                fiscal year 2020.
-              </h3>
-            </div>
-            <div className="graph-information-sub-box">
-              <h1 className="sub-box-title">6x Lower</h1>
-              <h3 className="sub-box-info">
-                Between fiscal year 2017 and 2020, the New York asylum office's
-                average grant rate was six times lower than the San Francisco
-                asylum office.
-              </h3>
-            </div>
+      {/* Bottom Section: Add code here for the graphs section for your first ticket */}
+      <div className="bottom-section">
+        <h1>Systemic Disparity Insights</h1>
+        <div className="graph-information-box">
+          <div className="graph-information-sub-box">
+            <h2 className="sub-box-title">36%</h2>
+            <h3 className="sub-box-info">
+              By the end of the Trump administration, the average asylum office
+              grant rate had fallen 36 percent from an average of 44 percent in
+              fiscal year 2016 to 28 percent in fiscal year 2020
+            </h3>
           </div>
-          <button>test button</button>
+          <div className="graph-information-sub-box">
+            <h2 className="sub-box-title">5%</h2>
+            <h3 className="sub-box-info">
+              The New York asylum office grant rate dropped to 5 percent in
+              fiscal year 2020.
+            </h3>
+          </div>
+          <div className="graph-information-sub-box">
+            <h2 className="sub-box-title">6x Lower</h2>
+            <h3 className="sub-box-info">
+              Between fiscal year 2017 and 2020, the New York asylum office's
+              average grant rate was six times lower than the San Francisco
+              asylum office.
+            </h3>
+          </div>
         </div>
-        <p onClick={() => scrollToTop()} className="back-to-top">
-          Back To Top ^
-        </p>
+        <a
+          href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="read-more-btn">
+            <button
+              type="button"
+              className="ant-btn ant-btn-default"
+              style={{
+                backgroundColor: 'rgb(64,76,74)',
+                color: 'rgb(255,255,255)',
+              }}
+            >
+              <span>Read More</span>
+            </button>
+          </div>
+        </a>
       </div>
+      <p onClick={() => scrollToTop()} className="back-to-top">
+        Back To Top ^
+      </p>
     </div>
   );
 }
