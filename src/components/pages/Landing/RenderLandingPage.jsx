@@ -68,10 +68,10 @@ function RenderLandingPage(props) {
           View the Data
         </Button>
         <a href="https://humanrightsfirst.org/wp-content/uploads/2022/10/COW2021001887-I589Data.csv">
-          <div class="read-more-btn">
+          <div className="read-more-btn">
             <button
               type="button"
-              class="ant-btn ant-btn-default"
+              className="ant-btn ant-btn-default"
               style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
             >
               <span>Download the Data</span>

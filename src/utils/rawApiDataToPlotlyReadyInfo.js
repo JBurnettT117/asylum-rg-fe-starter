@@ -1,4 +1,7 @@
 const rawApiDataToPlotlyReadyInfo = (view, office, data) => {
+  console.log(data);
+  console.log(view);
+  console.log(office);
   const officeNames = [
     'Los Angeles, CA',
     'San Francisco, CA',
@@ -63,6 +66,7 @@ const rawApiDataToPlotlyReadyInfo = (view, office, data) => {
     switch (view) {
       case 'time-series':
         const rowsForAllDisplay = [];
+        console.log(data); //you made this change here
         for (let yearResults of data[0].yearResults) {
           rowItem = {
             'Fiscal Year': yearResults.fiscal_year,

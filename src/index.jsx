@@ -23,6 +23,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const { primary_accent_color } = colors;
 
 const store = configureStore({ reducer: reducer });
