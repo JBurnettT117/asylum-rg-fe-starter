@@ -1,7 +1,7 @@
 const rawApiDataToPlotlyReadyInfo = (view, office, data) => {
-  console.log(data);
-  console.log(view);
-  console.log(office);
+  // console.log(data);
+  // console.log(view);
+  // console.log(office);
   const officeNames = [
     'Los Angeles, CA',
     'San Francisco, CA',

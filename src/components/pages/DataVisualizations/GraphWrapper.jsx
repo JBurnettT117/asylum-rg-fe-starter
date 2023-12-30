@@ -10,12 +10,8 @@ import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
 import { resetVisualizationQuery } from '../../../state/actionCreators';
-// import test_data from '../../../data/test_data.json';// this is the problem to be fixed. just look for test data in the two locations to fix it.
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
-// import { setData } from '../../../state/actionCreators';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const { background_color } = colors;
 
@@ -82,33 +78,63 @@ function GraphWrapper(props) {
     */
 
     if (office === 'all' || !office) {
-      axios
-        .get(`${process.env.REACT_APP_API_URI}/summary`, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+      let fiscalPromise = axios.get(
+        `${process.env.REACT_APP_API_URI}/fiscalSummary`,
+        {
           params: {
             from: years[0],
             to: years[1],
           },
-        })
-        .then(result => {
-          console.log(result);
-          stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+        }
+      );
+      let citizenshipPromise = axios.get(
+        `${process.env.REACT_APP_API_URI}/citizenshipSummary`,
+        {
+          params: {
+            from: years[0],
+            to: years[1],
+          },
+        }
+      );
+      Promise.all([fiscalPromise, citizenshipPromise])
+        .then(results => {
+          let fiscalData = results[0].data;
+          let citizenshipResults = results[1].data;
+          fiscalData.citizenshipResults = citizenshipResults;
+          let finalData = [fiscalData];
+          stateSettingCallback(view, office, finalData);
         })
         .catch(err => {
           console.error(err);
         });
     } else {
-      axios
-        .get('https://hrf-asylum-be-b.herokuapp.com/cases', {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+      let fiscalPromise = axios.get(
+        `${process.env.REACT_APP_API_URI}/fiscalSummary`,
+        {
           params: {
             from: years[0],
             to: years[1],
             office: office,
           },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, result.data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+        }
+      );
+      let citizenshipPromise = axios.get(
+        `${process.env.REACT_APP_API_URI}/citizenshipSummary`,
+        {
+          params: {
+            from: years[0],
+            to: years[1],
+            office: office,
+          },
+        }
+      );
+      Promise.all([fiscalPromise, citizenshipPromise])
+        .then(results => {
+          let fiscalData = results[0].data;
+          let citizenshipResults = results[1].data;
+          fiscalData.citizenshipResults = citizenshipResults;
+          let finalData = [fiscalData];
+          stateSettingCallback(view, office, finalData);
         })
         .catch(err => {
           console.error(err);
