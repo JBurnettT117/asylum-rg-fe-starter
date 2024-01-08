@@ -31,9 +31,9 @@ function RenderLandingPage(props) {
         </div>
       </div>
 
-      {/* Graphs Section: Add code here for the graphs section for your first ticket */}
+      {/* Graphs Section: Add code here for the graphs section for your first ticket*/}
       <div className="graphs-section">
-        <div className="grant-rates-by-office-graph-container">
+        <div className="grant-rates-container">
           <img
             src={GrantRatesByOfficeImg}
             alt="grant rates by office"
@@ -41,7 +41,7 @@ function RenderLandingPage(props) {
           />
           <p>Search Grant Rates By Office</p>
         </div>
-        <div className="grant-rates-by-nationality-container">
+        <div className="grant-rates-container nationality-container-adjuster">
           <img
             src={GrantRatesByNationalityImg}
             alt="grant rates by nationality"
@@ -49,8 +49,7 @@ function RenderLandingPage(props) {
           />
           <p>Search Grant Rates By Nationality</p>
         </div>
-        {/* finish fleshing out these containers, keep up the good work. */}
-        <div className="grant-rates-over-time-container">
+        <div className="grant-rates-container">
           <img
             src={GrantRatesOverTimeImg}
             alt="grant rates over time"
@@ -77,6 +76,12 @@ function RenderLandingPage(props) {
               <span>Download the Data</span>
             </button>
           </div>
+          <Button
+            type="button"
+            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          >
+            Download the Data
+          </Button>
         </a>
       </div>
 
@@ -105,7 +110,7 @@ function RenderLandingPage(props) {
             <h3 className="sub-box-info">
               By the end of the Trump administration, the average asylum office
               grant rate had fallen 36 percent from an average of 44 percent in
-              fiscal year 2016 to 28 percent in fiscal year 2020
+              fiscal year 2016 to 28 percent in fiscal year 2020.
             </h3>
           </div>
           <div className="graph-information-sub-box">
@@ -124,11 +129,7 @@ function RenderLandingPage(props) {
             </h3>
           </div>
         </div>
-        <a
-          href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/">
           <div className="read-more-btn">
             <button
               type="button"
@@ -138,7 +139,7 @@ function RenderLandingPage(props) {
                 color: 'rgb(255,255,255)',
               }}
             >
-              <span>Read More</span>
+              Read More
             </button>
           </div>
         </a>
@@ -150,8 +151,3 @@ function RenderLandingPage(props) {
   );
 }
 export default RenderLandingPage;
-
-//task to complete. change flex order based on screen width.
-// add in some kind of bacground that changes on view width
-// add in a "read more" button that navigates to the right site.
-//add in a "download the data" button that does whatever the act
