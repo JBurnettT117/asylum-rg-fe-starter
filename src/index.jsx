@@ -25,13 +25,15 @@ import { colors } from './styles/data_vis_colors';
 
 import { Auth0Provider } from '@auth0/auth0-react';
 
+import ProfilePage from './components/pages/Landing/ProfilePage';
+
 const { primary_accent_color } = colors;
 
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Auth0Provider
-    domain="dev-27cssbgwewm6ecfi.us.auth0.com"
-    clientId="5mJM6YCDfY8WWT1sxAll2TFpB8JTwyDu"
+    domain="dev-nldygebyjqcs6gt4.us.auth0.com"
+    clientId="n5pDYETymqFvH1mjojJxQY9jk82ViDuJ"
     authorizationParams={{
       redirect_uri: 'http://localhost:3000',
     }}
@@ -64,7 +66,7 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
-        {/* <Route path="/profile" component={} /> */}
+        <Route path="/profile" component={ProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer

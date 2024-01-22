@@ -5,11 +5,12 @@ import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
 import LoginButton from '../pages/accountManagement/login';
 import LogoutButton from '../pages/accountManagement/logout';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const { primary_accent_color } = colors;
 
 function HeaderContent() {
-  const token = localStorage.getItem('token');
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div
@@ -34,13 +35,13 @@ function HeaderContent() {
         </Link>
 
         <Link style={{ color: '#E2F0F7' }}>
-          {token ? (
-            <>
+          {isAuthenticated ? (
+            <div className="profile-logout">
               <Link to="/profile" style={{ color: '#E2F0F7' }}>
                 Profile
               </Link>
               <LogoutButton />
-            </>
+            </div>
           ) : (
             <LoginButton />
           )}
